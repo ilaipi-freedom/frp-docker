@@ -1,0 +1,27 @@
+serverAddr = "SERVER_HOST"
+serverPort = SERVER_PORT
+auth.token = "AUTH_TOKEN"
+
+[[proxies]]
+name = "blog_root"
+type = "http"
+localPort = 80
+customDomains = ["ROOT_DOMAIN_NAME"]
+
+[[proxies]]
+name = "blog_roothttps"
+type = "https"
+localPort = 443
+customDomains = ["ROOT_DOMAIN_NAME"]
+
+[[proxies]]
+name = "ilaipi"
+type = "http"
+localPort = 80
+customDomains = ["*.ROOT_DOMAIN_NAME"]
+
+[[proxies]]
+name = "ilaipihttps"
+type = "https"
+localPort = 443
+customDomains = ["*.ROOT_DOMAIN_NAME"]

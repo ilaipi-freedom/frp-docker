@@ -1,0 +1,12 @@
+bindPort = SERVER_PORT
+
+vhostHTTPPort = 80
+vhostHTTPSPort = 443
+
+webServer.addr = "FRP_DASHBOARD_ADDR"
+webServer.port = FRP_DASHBOARD_PORT
+webServer.user = "FRP_DASHBOARD_USERNAME"
+webServer.password = "FRP_DASHBOARD_PASSWORD"
+
+
+auth.token = "AUTH_TOKEN"
