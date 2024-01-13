@@ -36,7 +36,7 @@ jobs:
             SERVER_HOST=${{ secrets.SERVER_HOST }}
             SERVER_PORT=${{ secrets.SERVER_PORT }}
             AUTH_TOKEN=${{ secrets.AUTH_TOKEN }}
-            ROOT_DOMAIN_NAME=${{ secrets.ROOT_DOMAIN_NAME }}
+            ROOT_DOMAIN_NAME=${{ vars.ROOT_DOMAIN_NAME }}
             FRP_DASHBOARD_ADDR=${{ secrets.FRP_DASHBOARD_ADDR }}
             FRP_DASHBOARD_PORT=${{ secrets.FRP_DASHBOARD_PORT }}
             FRP_DASHBOARD_USERNAME=${{ secrets.FRP_DASHBOARD_USERNAME }}
@@ -54,7 +54,7 @@ jobs:
             SERVER_HOST=${{ secrets.SERVER_HOST }}
             SERVER_PORT=${{ secrets.SERVER_PORT }}
             AUTH_TOKEN=${{ secrets.AUTH_TOKEN }}
-            ROOT_DOMAIN_NAME=${{ secrets.ROOT_DOMAIN_NAME }}
+            ROOT_DOMAIN_NAME=${{ vars.ROOT_DOMAIN_NAME }}
             FRP_DASHBOARD_ADDR=${{ secrets.FRP_DASHBOARD_ADDR }}
             FRP_DASHBOARD_PORT=${{ secrets.FRP_DASHBOARD_PORT }}
             FRP_DASHBOARD_USERNAME=${{ secrets.FRP_DASHBOARD_USERNAME }}
