@@ -26,14 +26,14 @@ RUN cd /root \
     &&  rm -rf frp_${FRP_VERSION}_linux_amd64/ 
 
 COPY ./${CONF_FILE_NAME}.toml /etc/frp/
-RUN sed -i 's/SERVER_HOST/${SERVER_HOST}' /etc/frp/${CONF_FILE_NAME}.toml \
-    && sed -i 's/SERVER_PORT/${SERVER_PORT}' /etc/frp/${CONF_FILE_NAME}.toml \
-    && sed -i 's/AUTH_TOKEN/${AUTH_TOKEN}' /etc/frp/${CONF_FILE_NAME}.toml \
-    && sed -i 's/ROOT_DOMAIN_NAME/${ROOT_DOMAIN_NAME}' /etc/frp/${CONF_FILE_NAME}.toml \
-    && sed -i 's/FRP_DASHBOARD_ADDR/${FRP_DASHBOARD_ADDR}' /etc/frp/${CONF_FILE_NAME}.toml \
-    && sed -i 's/FRP_DASHBOARD_PORT/${FRP_DASHBOARD_PORT}' /etc/frp/${CONF_FILE_NAME}.toml \
-    && sed -i 's/FRP_DASHBOARD_USERNAME/${FRP_DASHBOARD_USERNAME}' /etc/frp/${CONF_FILE_NAME}.toml \
-    && sed -i 's/FRP_DASHBOARD_PASSWORD/${FRP_DASHBOARD_PASSWORD}' /etc/frp/${CONF_FILE_NAME}.toml
+RUN sed -i 's/SERVER_HOST/${SERVER_HOST}/g' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/SERVER_PORT/${SERVER_PORT}/g' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/AUTH_TOKEN/${AUTH_TOKEN}/g' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/ROOT_DOMAIN_NAME/${ROOT_DOMAIN_NAME}/g' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/FRP_DASHBOARD_ADDR/${FRP_DASHBOARD_ADDR}/g' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/FRP_DASHBOARD_PORT/${FRP_DASHBOARD_PORT}/g' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/FRP_DASHBOARD_USERNAME/${FRP_DASHBOARD_USERNAME}/g' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/FRP_DASHBOARD_PASSWORD/${FRP_DASHBOARD_PASSWORD}/g' /etc/frp/${CONF_FILE_NAME}.toml
 
 ENTRYPOINT /usr/bin/${CONF_FILE_NAME}
 
