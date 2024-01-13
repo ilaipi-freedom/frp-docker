@@ -12,7 +12,7 @@ ARG FRP_DASHBOARD_PORT=7500
 ARG FRP_DASHBOARD_USERNAME=admin
 ARG FRP_DASHBOARD_PASSWORD=admin
 
-ARG CONF_FILE_NAME=frpc.toml
+ARG CONF_FILE_NAME=frpc
 
 ENV FRP_VERSION ${FRP_VERSION}
 
@@ -25,16 +25,16 @@ RUN cd /root \
     &&  rm frp_${FRP_VERSION}_linux_amd64.tar.gz \
     &&  rm -rf frp_${FRP_VERSION}_linux_amd64/ 
 
-COPY ./${CONF_FILE_NAME} /etc/frp/
-RUN sed -i 's/SERVER_HOST/${secrets.SERVER_HOST}' /etc/frp/${CONF_FILE_NAME} \
-    && sed -i 's/SERVER_PORT/${secrets.SERVER_PORT}' /etc/frp/${CONF_FILE_NAME} \
-    && sed -i 's/AUTH_TOKEN/${secrets.AUTH_TOKEN}' /etc/frp/${CONF_FILE_NAME} \
-    && sed -i 's/ROOT_DOMAIN_NAME/${secrets.ROOT_DOMAIN_NAME}' /etc/frp/${CONF_FILE_NAME} \
-    && sed -i 's/FRP_DASHBOARD_ADDR/${secrets.FRP_DASHBOARD_ADDR}' /etc/frp/${CONF_FILE_NAME} \
-    && sed -i 's/FRP_DASHBOARD_PORT/${secrets.FRP_DASHBOARD_PORT}' /etc/frp/${CONF_FILE_NAME} \
-    && sed -i 's/FRP_DASHBOARD_USERNAME/${secrets.FRP_DASHBOARD_USERNAME}' /etc/frp/${CONF_FILE_NAME} \
-    && sed -i 's/FRP_DASHBOARD_PASSWORD/${secrets.FRP_DASHBOARD_PASSWORD}' /etc/frp/${CONF_FILE_NAME}
+COPY ./${CONF_FILE_NAME}.toml /etc/frp/
+RUN sed -i 's/SERVER_HOST/${secrets.SERVER_HOST}' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/SERVER_PORT/${secrets.SERVER_PORT}' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/AUTH_TOKEN/${secrets.AUTH_TOKEN}' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/ROOT_DOMAIN_NAME/${secrets.ROOT_DOMAIN_NAME}' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/FRP_DASHBOARD_ADDR/${secrets.FRP_DASHBOARD_ADDR}' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/FRP_DASHBOARD_PORT/${secrets.FRP_DASHBOARD_PORT}' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/FRP_DASHBOARD_USERNAME/${secrets.FRP_DASHBOARD_USERNAME}' /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i 's/FRP_DASHBOARD_PASSWORD/${secrets.FRP_DASHBOARD_PASSWORD}' /etc/frp/${CONF_FILE_NAME}.toml
 
-ENTRYPOINT /usr/bin/frpc
+ENTRYPOINT /usr/bin/${CONF_FILE_NAME}
 
-CMD ["-c", "/etc/frp/frpc.toml"]
+CMD ["-c", "/etc/frp/${CONF_FILE_NAME}.toml"]

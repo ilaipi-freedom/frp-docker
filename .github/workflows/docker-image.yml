@@ -50,7 +50,7 @@ jobs:
           tags: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_HUB_SPACE }}/${{ vars.DOCKER_IMAGE_NAME_FRPS }}:latest
           build-args: |
             FRP_VERSION=${{ vars.FRP_VERSION }}
-            CONF_FILE_NAME=frps.toml
+            CONF_FILE_NAME=frps
             SERVER_HOST=${{ secrets.SERVER_HOST }}
             SERVER_PORT=${{ secrets.SERVER_PORT }}
             AUTH_TOKEN=${{ secrets.AUTH_TOKEN }}
