@@ -35,6 +35,4 @@ RUN sed -i "s/SERVER_HOST/${SERVER_HOST}/g" /etc/frp/${CONF_FILE_NAME}.toml \
     && sed -i "s/FRP_DASHBOARD_USERNAME/${FRP_DASHBOARD_USERNAME}/g" /etc/frp/${CONF_FILE_NAME}.toml \
     && sed -i "s/FRP_DASHBOARD_PASSWORD/${FRP_DASHBOARD_PASSWORD}/g" /etc/frp/${CONF_FILE_NAME}.toml
 
-ENTRYPOINT /usr/bin/${CONF_FILE_NAME}
-
-CMD ["-c", "/etc/frp/${CONF_FILE_NAME}.toml"]
+ENTRYPOINT /usr/bin/${CONF_FILE_NAME} -c /etc/frp/${CONF_FILE_NAME}.toml
