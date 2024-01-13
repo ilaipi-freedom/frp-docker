@@ -15,6 +15,7 @@ ARG FRP_DASHBOARD_PASSWORD=admin
 ARG CONF_FILE_NAME=frpc
 
 ENV FRP_VERSION ${FRP_VERSION}
+ENV CONF_FILE_NAME ${CONF_FILE_NAME}
 
 RUN cd /root \
     &&  wget --no-check-certificate -c https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_amd64.tar.gz \
@@ -35,4 +36,4 @@ RUN sed -i "s/SERVER_HOST/${SERVER_HOST}/g" /etc/frp/${CONF_FILE_NAME}.toml \
     && sed -i "s/FRP_DASHBOARD_USERNAME/${FRP_DASHBOARD_USERNAME}/g" /etc/frp/${CONF_FILE_NAME}.toml \
     && sed -i "s/FRP_DASHBOARD_PASSWORD/${FRP_DASHBOARD_PASSWORD}/g" /etc/frp/${CONF_FILE_NAME}.toml
 
-ENTRYPOINT ["/usr/bin/${CONF_FILE_NAME}", "-c", "/etc/frp/${CONF_FILE_NAME}.toml"]
+ENTRYPOINT /usr/bin/${CONF_FILE_NAME} -c /etc/frp/${CONF_FILE_NAME}.toml
