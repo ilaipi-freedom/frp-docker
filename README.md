@@ -34,24 +34,30 @@ ROOT_DOMAIN_NAME 如果是http服务，这个应该是必填的
 SERVER_HOST 就是云服务器的地址 必填
 SERVER_PORT frp服务监听的端口 默认是 7000  建议修改
 AUTH_TOKEN  frp服务的认证token 建议必填 没有测试不填的情况 如果非不想填，可能需要把 frp*.toml 中的 `auth.token` 这行给删掉
+
+# 这几个是frp dashboard的参数，可以在 frps 容器查看具体的值，每次更换服务器不需要改这里
 FRP_DASHBOARD_ADDR dashboard的host，默认是 0.0.0.0 非特殊情况应该都不需要填
 FRP_DASHBOARD_PORT dashboard的端口，默认是 7500  建议修改
 FRP_DASHBOARD_USERNAME dashboard的用户名 默认是 admin  建议修改
 FRP_DASHBOARD_PASSWORD dashboard的密码 默认是 admin  建议修改
 ```
 
-## Server
+## 部署
+
+已加入到 action 自动执行，参考： `.github/workflows/docker-image.yml`
+
+
+## 更换服务器说明
+
+Tips: 一般更换服务器，客户端需要做的只有修改服务器ip，尽量保持全部参数不改，就不需要修改其它任何参数。
+
+- [ ] 如果修改了ip，需要先把域名解析修改一下记录值，指向新的服务器ip
+- [ ] 新服务器开放frps端口，在 `frpc` 容器内可以查看端口号，
 
 ```
-docker run -dit --name frpc \
-  --network host --restart always \
-  xxx.your-domain.com/repository/freedom/frp-docker-frpc
+docker exec -it frpc sh
+
+cat /etc/frp/frpc.toml
 ```
 
-## Client
-
-```
-docker run -dit --name frpc \
-  --network host --restart always \
-  xxx.your-domain.com/repository/freedom/frp-docker-frpc
-```
+- [ ] 修改`secrets.SERVER_HOST`
