@@ -47,6 +47,7 @@ jobs:
             CONF_FILE_NAME=frps
             SERVER_HOST=${{ secrets.SERVER_HOST }}
             AUTH_TOKEN=${{ secrets.AUTH_TOKEN }}
+            REMOTE_SERVER_PORT=${{ secrets.REMOTE_SERVER_PORT }}
             ROOT_DOMAIN_NAME=${{ vars.ROOT_DOMAIN_NAME }}
             FRP_DASHBOARD_ADDR=${{ secrets.FRP_DASHBOARD_ADDR }}
             FRP_DASHBOARD_USERNAME=${{ secrets.FRP_DASHBOARD_USERNAME }}
