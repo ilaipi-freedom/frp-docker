@@ -29,8 +29,8 @@ jobs:
           build-args: |
             FRP_VERSION=${{ vars.FRP_VERSION }}
             SERVER_HOST=${{ secrets.SERVER_HOST }}
-            SERVER_PORT=${{ secrets.SERVER_PORT }}
             AUTH_TOKEN=${{ secrets.AUTH_TOKEN }}
+            REMOTE_SERVER_PORT=${{ secrets.REMOTE_SERVER_PORT }}
             ROOT_DOMAIN_NAME=${{ vars.ROOT_DOMAIN_NAME }}
             FRP_DASHBOARD_ADDR=${{ secrets.FRP_DASHBOARD_ADDR }}
             FRP_DASHBOARD_PORT=${{ secrets.FRP_DASHBOARD_PORT }}
@@ -47,7 +47,8 @@ jobs:
             CONF_FILE_NAME=frps
             SERVER_HOST=${{ secrets.SERVER_HOST }}
             AUTH_TOKEN=${{ secrets.AUTH_TOKEN }}
-            REMOTE_SERVER_PORT=${{ secrets.REMOTE_SERVER_PORT }}
+            REMOTE_HTTP_PORT=${{ secrets.REMOTE_HTTP_PORT }}
+            REMOTE_HTTPS_PORT=${{ secrets.REMOTE_HTTPS_PORT }}
             ROOT_DOMAIN_NAME=${{ vars.ROOT_DOMAIN_NAME }}
             FRP_DASHBOARD_ADDR=${{ secrets.FRP_DASHBOARD_ADDR }}
             FRP_DASHBOARD_USERNAME=${{ secrets.FRP_DASHBOARD_USERNAME }}

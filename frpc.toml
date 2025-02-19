@@ -8,7 +8,6 @@ type = "http"
 localPort = 80
 customDomains = ["ROOT_DOMAIN_NAME"]
 transport.proxyProtocolVersion = "v2"
-remotePort = REMOTE_HTTP_PORT
 
 [[proxies]]
 name = "blog_roothttps"
@@ -16,7 +15,6 @@ type = "https"
 localPort = 443
 customDomains = ["ROOT_DOMAIN_NAME"]
 transport.proxyProtocolVersion = "v2"
-remotePort = REMOTE_HTTPS_PORT
 
 [[proxies]]
 name = "ilaipi"
@@ -24,7 +22,6 @@ type = "http"
 localPort = 80
 customDomains = ["*.ROOT_DOMAIN_NAME"]
 transport.proxyProtocolVersion = "v2"
-remotePort = REMOTE_HTTP_PORT
 
 [[proxies]]
 name = "ilaipihttps"
@@ -32,4 +29,3 @@ type = "https"
 localPort = 443
 customDomains = ["*.ROOT_DOMAIN_NAME"]
 transport.proxyProtocolVersion = "v2"
-remotePort = REMOTE_HTTPS_PORT

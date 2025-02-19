@@ -1,7 +1,7 @@
 bindPort = SERVER_PORT
 
-vhostHTTPPort = 80
-vhostHTTPSPort = 443
+vhostHTTPPort = REMOTE_HTTP_PORT
+vhostHTTPSPort = REMOTE_HTTPS_PORT
 
 webServer.addr = "FRP_DASHBOARD_ADDR"
 webServer.port = FRP_DASHBOARD_PORT
