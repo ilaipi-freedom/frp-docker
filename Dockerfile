@@ -2,7 +2,7 @@ FROM alpine:3.19.0
 
 LABEL maintainer="ilaipi <mz.yyam@gmail.com>"
 
-ARG FRP_VERSION=0.53.2
+ARG FRP_VERSION=0.61.1
 ARG SERVER_HOST
 ARG SERVER_PORT=7000
 ARG AUTH_TOKEN
