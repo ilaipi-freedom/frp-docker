@@ -6,6 +6,8 @@ ARG FRP_VERSION=0.61.1
 ARG SERVER_HOST
 ARG SERVER_PORT=7000
 ARG REMOTE_SERVER_PORT=7000
+ARG REMOTE_HTTP_PORT=80
+ARG REMOTE_HTTPS_PORT=443
 ARG AUTH_TOKEN
 ARG ROOT_DOMAIN_NAME
 ARG FRP_DASHBOARD_ADDR=0.0.0.0
@@ -30,7 +32,9 @@ RUN cd /root \
 COPY ./${CONF_FILE_NAME}.toml /etc/frp/
 RUN sed -i "s/SERVER_HOST/${SERVER_HOST}/g" /etc/frp/${CONF_FILE_NAME}.toml \
     && sed -i "s/SERVER_PORT/${SERVER_PORT}/g" /etc/frp/${CONF_FILE_NAME}.toml \
-    && sed -i "s/REMOTE_SERVER_PORT/${REMOTE_SERVER_PORT}/g" /etc/frp/frpc.toml \
+    && sed -i "s/REMOTE_SERVER_PORT/${REMOTE_SERVER_PORT}/g" /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i "s/REMOTE_HTTP_PORT/${REMOTE_HTTP_PORT}/g" /etc/frp/${CONF_FILE_NAME}.toml \
+    && sed -i "s/REMOTE_HTTPS_PORT/${REMOTE_HTTPS_PORT}/g" /etc/frp/${CONF_FILE_NAME}.toml \
     && sed -i "s/AUTH_TOKEN/${AUTH_TOKEN}/g" /etc/frp/${CONF_FILE_NAME}.toml \
     && sed -i "s/ROOT_DOMAIN_NAME/${ROOT_DOMAIN_NAME}/g" /etc/frp/${CONF_FILE_NAME}.toml \
     && sed -i "s/FRP_DASHBOARD_ADDR/${FRP_DASHBOARD_ADDR}/g" /etc/frp/${CONF_FILE_NAME}.toml \
